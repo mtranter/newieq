@@ -1,0 +1,16 @@
+{
+    "folders": [
+      {
+        "path": "services/users-service",
+        "name": "Services/Users"
+      },
+      {
+        "path": "services/modules",
+        "name": "Service Modules"
+      },
+      {
+        "path": ".",
+        "name": "Root"
+      },
+    ]
+  }
