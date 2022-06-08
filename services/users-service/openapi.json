@@ -1,0 +1,126 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Platform In A Box ECommerce Pricing API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/me": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "OK"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "AWS_PROXY",
+          "httpMethod": "POST",
+          "uri": "${FUNCTION_ARN}",
+          "payloadFormatVersion": "1.0"
+        },
+        "security": [
+          {
+            "lambda-auth": []
+          }
+        ]
+      }
+    },
+    "/login": {
+      "post": {
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "OK"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "AWS_PROXY",
+          "httpMethod": "POST",
+          "uri": "${FUNCTION_ARN}",
+          "payloadFormatVersion": "1.0"
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "OK"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "minLength": 4,
+                    "maxLength": 64,
+                    "type": "string"
+                  },
+                  "password": {
+                    "minLength": 8,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "username",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "AWS_PROXY",
+          "httpMethod": "POST",
+          "uri": "${FUNCTION_ARN}",
+          "payloadFormatVersion": "1.0"
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "lambda-auth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "x-amazon-apigateway-authorizer": {
+          "type": "token",
+          "x-amazon-apigateway-authtype": "custom",
+          "enableSimpleResponses": true,
+          "identitySource": "$request.header.Authorization",
+          "authorizerPayloadFormatVersion": "2.0",
+          "authorizerResultTtlInSeconds": 300,
+          "authorizerUri": "${AUTHORIZER_FUNCTION_URI}"
+        }
+      }
+    }
+  }
+}
