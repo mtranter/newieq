@@ -9,7 +9,7 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: 'coverage',
   coveragePathIgnorePatterns: ['/node_modules/', '/dist/'],
-  modulePathIgnorePatterns: ['.terragrunt-cache', '/dist/'],
+  modulePathIgnorePatterns: ['.terragrunt-cache', '.terraform', '/dist/'],
   testEnvironment: 'node',
   testPathIgnorePatterns: ['/node_modules/', '/dist/', '/build/'],
   transform: {
