@@ -3,7 +3,7 @@ import { buildApi } from './src/api/routes';
 
 export const OpenApiSpec = buildApi(null as any, null as any).toOpenApi(
   {
-    title: 'Platform In A Box ECommerce Pricing API',
+    title: 'Users Service API',
     version: '1.0.0'
   },
   '${FUNCTION_ARN}',
